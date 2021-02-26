@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.model.OrderModel;
 
 public class OrderListModel {
-	
+
 	List<OrderModel> ordersList;
 
 	public List<OrderModel> getOrdersList() {
@@ -20,8 +20,5 @@ public class OrderListModel {
 	public String toString() {
 		return "OrderListModel [ordersList=" + ordersList + "]";
 	}
-	
-	
-	
 
 }

@@ -15,18 +15,18 @@ import javax.persistence.Table;
 
 @Entity
 public class UserModel {
-	
+
 	@Id
 	String email;
 	String password;
 	String username;
 	String role;
 	String mobileNumber;
-	
+
 	public UserModel() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public UserModel(String email, String username, String mobilenumber, String role, String password) {
 		this.email = email;
 		this.username = username;
@@ -80,5 +80,5 @@ public class UserModel {
 		return "UserModel [email=" + email + ", password=" + password + ", username=" + username + ", role=" + role
 				+ ", mobileNumber=" + mobileNumber + "]";
 	}
-	
+
 }

@@ -15,12 +15,17 @@ const EditProduct = props => {
         description : '',
         price : '',
         quantity : 1,
-        imageUrl : ''
+        imageUrl : '',
+        scheduleHCode : ''
     }
 
     const [state, setState] = useState(dummyState);
 
+    const [sHcode , setSHCode] = useState(false);
+
     const authContent = useContext(AuthContext);
+
+    const toggleHCode = () => setSHCode(prevState => !prevState);
 
     const onChangeHandler = (e) => {
         const name = e.target.getAttribute('id');
@@ -35,6 +40,9 @@ const EditProduct = props => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         const tempState = _.cloneDeep(state);
+
+        if(tempState.scheduleHCode == '')
+            tempState.scheduleHCode = null;
 
         axios.put("http://localhost:8080/admin/editproduct/" + productId, tempState)
         .then(res => {
@@ -65,7 +73,8 @@ const EditProduct = props => {
                 description : productDetails.description,
                 price : productDetails.price,
                 quantity : productDetails.quantity,
-                imageUrl : productDetails.imageUrl
+                imageUrl : productDetails.imageUrl,
+                scheduleHCode : productDetails.scheduleHCode
             });
 
             setProductId(productDetails.productId);
@@ -106,6 +115,18 @@ const EditProduct = props => {
                         <label htmlFor="imageUrl" className="mb-2">Image URL</label>
                         <input type="text" className="form-control  mb-2" id="imageUrl" placeholder="Enter Image URL" onChange={onChangeHandler} value={state.imageUrl}/>
                     </div>
+
+                    <div className="form-check mb-3">
+                        <input className="form-check-input" type="checkbox" onClick={toggleHCode} value={sHcode} id="sHCode"/>
+                        <label className="form-check-label" for="sHCode">
+                            Provide Schedule-H code
+                        </label>
+                    </div>
+
+                    {sHcode && <div className="form-group mb-3">
+                        <label htmlFor="scheduleHCode" className="mb-2">Schedule-H Drug</label>
+                        <input type="text" className="form-control  mb-2" id="scheduleHCode" placeholder="Enter Schedule H Drug Code" onChange={onChangeHandler} value={state.scheduleHCode} required={sHcode}/>
+                    </div>}
                     
                     <button type="submit" className="btn btn-primary">Save</button>
                 </form>

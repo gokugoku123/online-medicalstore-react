@@ -13,13 +13,11 @@ const App = (props) => {
   toast.configure();
   const history = useHistory();
 
-  
-
   const [state, setState] = useState({
     auth : {
       username : '',
-      authenticated : false,
-      role : ''
+      authenticated : true,
+      role : 'ADMIN'
     }
   })
 

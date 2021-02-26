@@ -12,8 +12,11 @@ const AddProduct = props => {
         description : '',
         price : '',
         quantity : 1,
-        imageUrl : ''
+        imageUrl : '',
+        scheduleHCode : null
     }
+
+    const [sHcode , setSHCode] = useState(false);
 
     const [state, setState] = useState(dummyState);
 
@@ -28,6 +31,8 @@ const AddProduct = props => {
 
         setState(tempState);
     }
+
+    const toggleHCode = () => setSHCode(prevState => !prevState);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -71,10 +76,22 @@ const AddProduct = props => {
                         <input type="number" value="1" className="form-control mb-2" id="quantity" required aria-describedby="quantity" onChange={onChangeHandler} placeholder="Enter Quanitiy" value={state.quantity}/>
                     </div>
 
-                    <div className="form-group mb-3">
+                    <div className="form-group mb-4">
                         <label htmlFor="imageUrl" className="mb-2">Image URL</label>
                         <input type="text" className="form-control  mb-2" id="imageUrl" placeholder="Enter Image URL" onChange={onChangeHandler} value={state.imageUrl}/>
                     </div>
+
+                    <div className="form-check mb-3">
+                        <input className="form-check-input" type="checkbox" onClick={toggleHCode} value={sHcode} id="sHCode"/>
+                        <label className="form-check-label" for="sHCode">
+                            Provide Schedule-H code
+                        </label>
+                    </div>
+
+                    {sHcode && <div className="form-group mb-3">
+                        <label htmlFor="scheduleHCode" className="mb-2">Schedule-H Drug</label>
+                        <input type="text" className="form-control  mb-2" id="scheduleHCode" placeholder="Enter Schedule H Drug Code" onChange={onChangeHandler} value={state.scheduleHCode} required={sHcode}/>
+                    </div>}
                     
                     <button type="submit" className="btn btn-primary">Add Product</button>
                 </form>

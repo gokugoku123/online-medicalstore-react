@@ -34,7 +34,7 @@ const Orders = (props) => {
     const ordersList = state.orders.map(order => {
 
         return (
-            <div className="container border px-3 shadow-lg bg-light my-4 rounded py-2">
+            <div className="container border px-3 shadow-lg bg-dark my-4 rounded py-2">
                 <ul className="list-group p-2 m-2 ">
                     <li className="list-group-item">Product Name : <b>{order.productName}</b></li>
                     <li className="list-group-item">Price : <b>{order.price}</b></li>

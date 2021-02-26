@@ -19,5 +19,5 @@ public class LoginController {
 
 	@Autowired
 	UserRepository userRepo;
-	
+
 }

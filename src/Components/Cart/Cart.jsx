@@ -58,8 +58,8 @@ const Cart = (props) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-12">
-                    <table className="table table-borderless" style={{border : 'none'}}>
-                        <thead className="bg-info">
+                    <table className="table table-borderless rounded" style={{border : 'none'}}>
+                        <thead className="bg-warning">
                         <tr className="text-center">
                             <th scope="col">Book Name</th>
                             <th scope="col">Price</th>
@@ -72,7 +72,7 @@ const Cart = (props) => {
                             {
                                 state.cartItems.map(cart => {
                                     return (
-                                        <tr >
+                                        <tr className="rounded my-3 text-dark" >
                                             <td className="text-center">{cart.productName}</td>
                                             <td className="text-center">{cart.price}</td>
                                             <td className="text-center">{cart.quantity}</td>

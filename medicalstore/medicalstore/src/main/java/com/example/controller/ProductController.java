@@ -1,7 +1,5 @@
 package com.example.controller;
 
- 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,37 +18,31 @@ import com.example.demo.repository.ProductRepository;
 import com.example.model.ProductModel;
 import com.example.service.ProductService;
 
-
- 
-
 @RestController
 @CrossOrigin(origins = "*")
 public class ProductController {
 
-		
 	@Autowired
 	public ProductService productService;
-        
-     @GetMapping("/products")
-     public List<ProductModel> getAllProducts() {
-    	 return productService.getAllProducts();
-     }
-        
-     @PostMapping("admin/addproduct")
-     public boolean addProduct(@RequestBody ProductModel product) {
-    	 return productService.addProduct(product);
-     }
-     
-     @PutMapping("/admin/editproduct/{id}")
-     public boolean editProduct(@PathVariable String id, @RequestBody ProductModel product) {
-    	 return productService.editProduct(id, product);
-     }
-     
-     @DeleteMapping("/admin/deleteProduct/{id}")
-     public boolean deleteProduct(@PathVariable String id) {
-    	 return productService.deleteProduct(id);
-     }
-     
-     
-    
+
+	@GetMapping("/products")
+	public List<ProductModel> getAllProducts() {
+		return productService.getAllProducts();
+	}
+
+	@PostMapping("admin/addproduct")
+	public boolean addProduct(@RequestBody ProductModel product) {
+		return productService.addProduct(product);
+	}
+
+	@PutMapping("/admin/editproduct/{id}")
+	public boolean editProduct(@PathVariable String id, @RequestBody ProductModel product) {
+		return productService.editProduct(id, product);
+	}
+
+	@DeleteMapping("/admin/deleteProduct/{id}")
+	public boolean deleteProduct(@PathVariable String id) {
+		return productService.deleteProduct(id);
+	}
+
 }

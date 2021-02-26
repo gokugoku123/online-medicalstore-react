@@ -18,30 +18,30 @@ import com.example.tempmodel.OrderListModel;
 @RestController
 @CrossOrigin(origins = "*")
 public class OrderController {
-	
+
 	@Autowired
 	public OrderRepository orderRepo;
-	
+
 	@GetMapping("/user/{id}/orders")
 	public List<OrderModel> getOrdersForUser(@PathVariable String id) {
 		return orderRepo.findByUserId(id);
 	}
-	
+
 	@PostMapping("/user/addorder")
 	public boolean addorder(@RequestBody List<OrderModel> orderList) {
-		
-		orderList.forEach(list -> orderRepo.save(list));	
+
+		orderList.forEach(list -> orderRepo.save(list));
 		return true;
 	}
-	
+
 	@DeleteMapping("/user/deleteorder/{id}")
 	public void deleteOrder(@PathVariable String orderId) {
 		orderRepo.deleteById(orderId);
 	}
-	
+
 	@DeleteMapping("/user/deleteall")
 	public void deleteAll() {
 		orderRepo.deleteAll();
 	}
-	
+
 }

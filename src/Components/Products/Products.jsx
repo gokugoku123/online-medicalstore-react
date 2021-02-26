@@ -24,7 +24,19 @@ const Products = props => {
         })
     })
 
-    const onAddToCart = product => () => {
+    const onAddToCart = (product, verificationSHCode) => {
+        console.log("product", product);
+        console.log("Verification code", verificationSHCode);
+
+        if(verificationSHCode !== product.shCode && product.shCode !== null) {
+            if(verificationSHCode == '') {
+                authContent.notify('Please enter your prescription number for this product !', 'warn');
+                return;
+            } else {
+                authContent.notify('Incorrect Prescription details !', 'error');
+                return;
+            }
+        }
 
         if(!authContent.state.auth.authenticated) {
             authContent.notify(`Please Log in`, 'warn');
@@ -34,7 +46,7 @@ const Products = props => {
         console.log("add Cart ", product);
 
         let cartItem = {
-            cartId : product.productId,
+            cartId : product.id,
             productName : product.productName,
             price : product.price,
             quantity : 1,
@@ -82,9 +94,10 @@ const Products = props => {
                         url={product.imageUrl}
                         description={product.description}
                         key={product.productId}
+                        shCode={product.scheduleHCode}  
                         edit={() => onEditProduct(product)}
                         delete={() => onDeleteProduct(product)}
-                        addcart={() => onAddToCart(product)}
+                        addcart={onAddToCart}
 
                 />
                 <Route exact path="/editproduct" component={() => <EditProduct />} />

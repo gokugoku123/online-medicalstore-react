@@ -14,5 +14,4 @@ import com.example.tempmodel.UserTempModel;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SignupController {
 
-
 }

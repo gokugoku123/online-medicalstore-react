@@ -9,7 +9,7 @@ import com.example.model.OrderModel;
 
 @Repository
 public interface OrderRepository extends JpaRepository<OrderModel, String> {
-	
+
 	List<OrderModel> findByUserId(String userId);
 
 }

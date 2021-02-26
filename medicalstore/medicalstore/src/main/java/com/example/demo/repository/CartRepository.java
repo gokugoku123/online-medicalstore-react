@@ -9,8 +9,8 @@ import com.example.model.CartModel;
 
 @Repository
 public interface CartRepository extends JpaRepository<CartModel, String> {
-	
+
 //	List<CartModel> findByAllUserId(String userId);
 	List<CartModel> findByUserId(String userId);
-	
+
 }

@@ -7,5 +7,5 @@ import com.example.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, String> {
-	
+
 }
